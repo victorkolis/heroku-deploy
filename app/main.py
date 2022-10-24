@@ -10,7 +10,9 @@ from fastapi import FastAPI, Response, status
 app = FastAPI()
 
 folders = Path('app/internal')  # pegando os diretórios
-file_path = os.path.join(folders, 'database.json')  # juntando o caminho dos diretórios e juntando com o banco de dados
+file_name = 'database.json'
+file_path = os.path.join(folders, file_name)  # juntando o caminho dos diretórios e juntando com o banco de dados
+
 
 @app.get('/users')
 def read_users(response: Response) -> List[User]:
