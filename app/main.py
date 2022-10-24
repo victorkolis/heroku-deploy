@@ -1,5 +1,6 @@
 import os
 import json
+from pathlib import Path
 from typing import List
 from app.models.users import User
 import uvicorn
@@ -8,8 +9,8 @@ from fastapi import FastAPI, Response, status
 
 app = FastAPI()
 
-file_path = os.path.realpath('internal/database.json')  # buscando arquivo na máquina, com o path real
-
+folders = Path('app/internal')  # pegando os diretórios
+file_path = os.path.join(folders, 'database.json')  # juntando o caminho dos diretórios e juntando com o banco de dados
 
 @app.get('/users')
 def read_users(response: Response) -> List[User]:
