@@ -4,7 +4,9 @@ from typing import List
 from app.models.users import User
 import uvicorn
 from fastapi import FastAPI, Response, status
+from app.internal.test import *
 
+logging.debug(f'{e} {f}')
 app = FastAPI()
 
 file_path = 'internal/database.json'  # buscando arquivo na máquina, com o path real
