@@ -7,8 +7,9 @@ from fastapi import FastAPI, Response, status
 
 app = FastAPI()
 
-file_path = 'internal/database.json'  # buscando arquivo na máquina, com o path real
+file_path = os.path.abspath('heroku-deploy/app/internal/database.json')  # buscando arquivo na máquina, com o path real
 
+print(file_path)
 
 @app.get('/users')
 def read_users(response: Response) -> List[User]:
