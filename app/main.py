@@ -7,7 +7,7 @@ from fastapi import FastAPI, Response, status
 
 app = FastAPI()
 
-file_path = os.path.realpath('internal/database.json')
+file_path = os.path.realpath('internal/database.json')  # buscando arquivo na máquina, com o path real
 
 
 @app.get('/users')
@@ -16,7 +16,7 @@ def read_users(response: Response) -> List[User]:
 
     with open(file_path) as file:
         archive = json.loads(file.read())
-        response.status_code = status.HTTP_200_OK
+        response.status_code = status.HTTP_202_ACCEPTED
     return archive
 
 
@@ -26,7 +26,7 @@ def read_user_by_id(id: int, response: Response) -> User or dict:
 
     with open(file_path) as file:  # criando um 'context', para jogar o arquivo dentro de uma variável
         archive = json.loads(file.read())  # lendo o arquivo do banco de dados que foi colocado na variável file
-        users = archive[0].get('users')  # pegando o primeiro elemento da lista do banco de dados '[{}]->{}'(dict)
+        users = archive[1].get('results')  # pegando o primeiro elemento da lista do banco de dados '[{}]->{}'(dict)
         for user in users:
             if user.get('id') == id:
                 response.status_code = status.HTTP_200_OK
