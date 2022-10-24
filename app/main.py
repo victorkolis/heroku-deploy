@@ -1,7 +1,7 @@
 import os
 import json
 from typing import List
-from models.users import User
+from app.models.users import User
 import uvicorn
 from fastapi import FastAPI, Response, status
 
