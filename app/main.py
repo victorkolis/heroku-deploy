@@ -8,7 +8,7 @@ from fastapi import FastAPI, Response, status
 
 app = FastAPI()
 
-file_path = 'app/internal/database.json'  # buscando arquivo na máquina, com o path real
+file_path = os.path.realpath('internal/database.json')  # buscando arquivo na máquina, com o path real
 
 
 @app.get('/users')
